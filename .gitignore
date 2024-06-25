@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# credential file
+
+ai_agent_lambda/credentials.json
+ai_agent_lambda/lib
