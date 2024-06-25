@@ -1,7 +1,8 @@
 
 import {
   
-  fetchCalendarEventTool
+  fetchCalendarEventTool,
+  insertCalanderEventTool
 } from "./Tools/calander.tool";
 import {
   OpenAI,
@@ -30,7 +31,7 @@ async function main() {
   const queryEngineTool = await pdfReaderTool();
 
   const agent = new OpenAIAgent({
-    tools: [queryEngineTool, fetchCalendarEventTool],
+    tools: [queryEngineTool, fetchCalendarEventTool, insertCalanderEventTool],
     verbose: true
   });
 
