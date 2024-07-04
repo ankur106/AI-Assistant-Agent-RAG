@@ -7,7 +7,7 @@ function ChatWindow() {
 
     const [isContent, setisContent] = useState(false);
     return (
-        <div className='w-1/10 border border-bdr-color grow relative flex flex-col max-w-full flex-1 overflow-hidden bg-white dark:bg-dark-light dark:text-white'>
+        <div className=' border border-darkTheme-border grow relative flex flex-col max-w-full flex-1 overflow-hidden dark:bg-darkTheme-dark-light dark:text-darkTheme-text'>
             {/* <div>Add Extra Elements</div> */}
             <div className="flex h-full flex-col ">
                 <div className="chat-view flex-1 overflow-hidden">

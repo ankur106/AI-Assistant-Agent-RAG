@@ -13,13 +13,21 @@ export default {
       xl: '1440px',
     },
     colors: {
-      'white' : '#ECECEC',
-      'dark' : '#181818',
-      'dark-light' : '#212121',
+      'lightTheme-white' : '#FFFFF',
+      // 'lightTheme-white' : 'red',
+
+      'lightTheme-white-light' : '#F9F9F9',
+      'lightTheme-text': '#2A2A2A',
+      'lightTheme-text-light': '#7D7D7D',
+      'darkTheme-dark' : '#181818',
+      'darkTheme-dark-light' : '#212121',
+      'darkTheme-text' : '#ECECEC',
+      'darkTheme-text-light' : '#CDCDCD',
+      'darkTheme-border': '#494949',
       'green': '#10A37F',
-      'white-off' : '#CDCDCD',
-      'bdr-color': '#494949',
-      'transparent' : 'transparent'
+      
+      'transparent' : 'transparent',
+      'inherit':'inherit'
     },
     
     extend: {
