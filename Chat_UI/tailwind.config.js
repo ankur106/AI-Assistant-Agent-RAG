@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'selector',
+  // darkMode: 'selector',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -22,9 +22,11 @@ export default {
       'darkTheme-dark' : '#181818',
       'darkTheme-dark-light' : '#212121',
       'darkTheme-text' : '#ECECEC',
-      'darkTheme-text-light' : '#CDCDCD',
+      'darkTheme-text-light' : '#B3B3B3',
       'darkTheme-border': '#494949',
       'green': '#10A37F',
+      'link-blue': 'rgb(37 99 235)',
+        'link-purple': 'rgb(67 56 202)',
       
       'transparent' : 'transparent',
       'inherit':'inherit'
