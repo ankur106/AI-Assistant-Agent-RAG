@@ -2,7 +2,7 @@ import { Document, VectorStoreIndex, QdrantVectorStore, storageContextFromDefaul
 
 import { QdrantClient } from "@qdrant/js-client-rest";
 
-export const qdrant_vector_tool = async()=>{
+export const qdrant_vector_tool : () => Promise<QueryEngineTool> = async()=>{
     const client = new QdrantClient({
         host: process.env.QDRANT_ENDPOINT,
         apiKey: process.env.QDRANT_API_KEY,

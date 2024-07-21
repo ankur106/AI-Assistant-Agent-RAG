@@ -2,9 +2,9 @@
 import * as path from 'path';
 
 import {
-    Document,
+    // Document,
     IngestionPipeline,
-    MetadataMode,
+    // MetadataMode,
     OpenAIEmbedding,
     TitleExtractor,
     SimpleNodeParser,

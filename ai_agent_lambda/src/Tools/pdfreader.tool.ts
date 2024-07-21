@@ -5,7 +5,7 @@ import * as path from 'path';
 
 
 // Tool if we want to create embeddings from local documents and 
-export const pdfReaderTool = async () =>{
+export const pdfReaderTool : () => Promise<QueryEngineTool> = async () =>{
 
     const directoryPath = path.resolve(__dirname, '../data/');
     const documents = await new SimpleDirectoryReader().loadData({directoryPath : directoryPath});
