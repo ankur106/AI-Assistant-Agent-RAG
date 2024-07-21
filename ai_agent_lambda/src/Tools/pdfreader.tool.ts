@@ -3,6 +3,8 @@ import { QueryEngineTool, SimpleDirectoryReader, VectorStoreIndex } from "llamai
 
 import * as path from 'path';
 
+
+// Tool if we want to create embeddings from local documents and 
 export const pdfReaderTool = async () =>{
 
     const directoryPath = path.resolve(__dirname, '../data/');

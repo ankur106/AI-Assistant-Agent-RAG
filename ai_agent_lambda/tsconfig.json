@@ -7,7 +7,6 @@
 			"ES2017",
 			"dom"
 		],
-
 		"rootDir": "src",
 		"outDir": "lib",
 		"skipLibCheck": true,
@@ -16,7 +15,6 @@
 		"strictFunctionTypes": true,
 		"strictNullChecks": true,
 		"strictPropertyInitialization": true,
-
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitAny": false,
 		"noImplicitReturns": true,
@@ -24,12 +22,10 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
-
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"downlevelIteration": true,
 		"declaration": true,
-
 		"pretty": true
 	},
 	"include": [

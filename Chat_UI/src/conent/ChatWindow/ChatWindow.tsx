@@ -25,7 +25,7 @@ export const  ChatWindow : React.FC = () => {
                             </div> */}
                             {isContent ?
                                 <div className='w-full h-full flex  flex-col justify-center items-center pb-7 overflow-y-auto mt-10'>
-                                    <div className='w-[75%] h-full'>
+                                    <div className='w-[50%] h-full'>
                                     <UserInput/>
                                     <ChatResponse/>
 
