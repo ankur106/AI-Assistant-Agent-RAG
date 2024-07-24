@@ -3,25 +3,37 @@
   "version": "1.0.0",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && tsc && npm run copy-files",
-    "clean": "rm -rf ./lib",
-    "copy-files" :"mkdir ./lib/data && cp ./src/data/*  ./lib/data/",
+    "clean": "rm -rf lib dist",
+    "prebuild": "npm run clean",
+    "build": "node build.mjs && npm run copy-files",
+    "postbuild": "cd lib && zip -r index.zip index.js*",
+    "copy-files": "mkdir -p ./lib/data && cp -r ./src/data/* ./lib/data/",
+    "rebuild": "npm rebuild onnxruntime-node",
     "lint": "tslint -c tslint.json src/**/*.ts",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build && npm run rebuild"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@aws-sdk/types": "^3.535.0",
     "@types/node": "^20.14.2",
+    "aws-lambda": "^1.0.7",
     "dotenv": "^16.4.5",
     "google-auth-library": "^9.11.0",
     "googleapis": "^140.0.0",
+    "lambda-stream": "^0.5.0",
     "llamaindex": "^0.3.17",
     "luxon": "^3.4.4",
+    "onnxruntime-node": "^1.18.0",
     "tslint": "^6.1.3",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.142",
+    "@types/node": "^20.12.4",
+    "esbuild": "^0.23.0",
+    "typescript": "^5.4.4"
   },
   "files": [
     "./bin/*",

@@ -73,7 +73,7 @@ const fetchCalanderEvent = async (days  : number = 2 ) : Promise<JSONValue> => {
   let blockedTimes : Events[] = [];
   try {
     let now = new Date();
-    console.log(now);
+    // console.log(now);
     let twoDaysLater = new Date();
     twoDaysLater.setDate(now.getDate() + 2);
     const res = await calendar.events.list({
