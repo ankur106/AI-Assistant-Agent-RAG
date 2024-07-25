@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './ChatWindow.scss'
 import { Header } from '../Header/Header';
 import { ChatInput } from '../../components/ChatInput/ChatInput';
@@ -11,7 +11,7 @@ import { currentChat , addMessages, updateChat} from '../../store/chat.slice';
 import { nanoid } from 'nanoid';
 
 export const ChatWindow: React.FC = () => {
-
+    const containerRef = useRef<HTMLDivElement>(null);
     const [isContent, setisContent] = useState<boolean>(false);
     const [isLoading, setisLoading] = useState<boolean>(false);
 
@@ -52,6 +52,10 @@ export const ChatWindow: React.FC = () => {
                         dispatch(updateChat({id : assistantMessage[CHAT.ID], message : message, isLoading : false}));
                         return;
                     }
+                    if (containerRef.current) {
+                    
+                        containerRef.current.scrollTop = containerRef.current.scrollHeight;
+                      }
                     message = message + decoder.decode(value, { stream: true })
                     console.log(message);
                     // Process the chunk (value) here
@@ -84,8 +88,8 @@ export const ChatWindow: React.FC = () => {
                                 <div className="mb-3 h-12 w-12"></div>
                             </div> */}
                             {isContent ?
-                                <div className='w-full h-full flex  flex-col justify-center items-center pb-7 overflow-y-auto mt-10'>
-                                    <div className='w-[50%] h-full justify-items-end'>
+                                <div className='w-full h-full flex flex-col  items-center pb-7 mt-10 overflow-y-auto max-h-[calc(100vh-200px)] justify-end' ref={containerRef}>
+                                    <div className='w-[97%] md:w-[50%] max-h-full'>
 
                                         {chat.map((item: Ichat) => {
                                             if (item[CHAT.USER] == MessageTypeEnum.USER) {
