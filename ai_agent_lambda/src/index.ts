@@ -17,13 +17,47 @@ async  function myhandler(event: LambdaFunctionURLEvent, responseStream: Respons
     try {
 
         let body = JSON.parse(event.body!);
-        let message = body['message'] + " give output in html format";
+        let message = body['message'];
         console.log(JSON.stringify(event));
         console.log(message);
         const response = await askChat({message});
 
         let reader   = response.getReader();
+
+        const metadata = {
+          statusCode : 200,
+          headers : headers
+        }
+
+        //@ts-ignore
+        // responseStream = awslambda.HttpResponseStream.from(responseStream, metadata);
+
         responseStream.setContentType("text/html");
+
+      
+        // setTimeout(()=>{
+        //   responseStream.write("Hello\n");
+        //   setTimeout(()=>{
+        //     responseStream.write("Hello\n");
+        //     setTimeout(()=>{
+        //       responseStream.write("Hello\n");
+        //       setTimeout(()=>{
+        //         responseStream.write("Hello\n");
+        //         setTimeout(()=>{
+        //           responseStream.write("Hello\n");
+        //           setTimeout(()=>{
+        //             responseStream.write("Hello\n");
+        //             setTimeout(()=>{
+        //               responseStream.end();
+                      
+        //             },1000)
+        //           },1000)
+        //         },1000)
+        //       },1000)
+        //     },1000)
+        //   },1000)
+        // },1000)
+
   
         readStream(reader, responseStream);
     }

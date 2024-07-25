@@ -1,5 +1,7 @@
 # AI Assistant with RAG (Retrival Augmanted Generation) and Agent
 
+## Checkout live at  [ask.ankurpatel.dev](https://ask.ankurpatel.dev/)
+
 <p>This is proof of concept project for llm application with RAG and AI Agents.</p>
 
 #### 1. Chat_UI folder consist chatbot UI with react and tailwand. 
