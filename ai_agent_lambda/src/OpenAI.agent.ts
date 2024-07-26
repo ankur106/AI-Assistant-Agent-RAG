@@ -24,7 +24,7 @@ import {
 
   }
   
-  export const askChat: (input : IaskChat)=> Promise<ReadableStream>  = async ({message, chatHistory = [], userTimeZone}) => {
+  export const askChat: (input : IaskChat)=> Promise<ReadableStream>  = async ({message, chatHistory, userTimeZone}) => {
   
     Settings.llm = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
@@ -44,39 +44,16 @@ import {
   
     const agent = new OpenAIAgent({
       tools: [vectorEngineTool, fetchCalendarEventTool, insertCalanderEventTool],
-      verbose: true
+      verbose: true,
+      systemPrompt : "You are Maya, AI Assistant of Ankur Patel. Your job is to answer questions about Ankur of other people. Your additional ability is giving summary/detail info of ankur. You can also help setting up meeting with ankur. You like to add humour in Your answer."
     });
   
-    // let response5 = await agent.chat({ message: "Tell me about Ankur and few availabilities to meet him." })
-    // let response5 = await agent.chat({ message: "Tell me about Ankur", stream: true, chatHistory: [] });
+
     let response = agent.chat({ message: message, stream: true, chatHistory: chatHistory });
   
 
     return response as Promise<ReadableStream<any>>;
-    // let reader   = response.getReader();
   
-    // function readStream() {
-    //   return reader.read().then(({ done, value }) => {
-    //     if (done) {
-    //       console.log('Stream complete');
-    //       return;
-    //     }
-    //     console.log( value.response.delta);
-    //     // Process the chunk (value) here
-    
-    //     // Read the next chunk
-    //     return readStream();
-    //   }).catch(error => {
-    //     console.error('Stream reading error:', error);
-    //   });
-    // }
-    
-    // Start reading the stream
-    // readStream();
-  
-  
-    // console.log("\n\n\n\n");
-    // console.log(JSON.stringify(response5.response.message.content, getCircularReplacer()));
   
   
   

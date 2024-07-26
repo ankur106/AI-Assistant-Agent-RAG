@@ -18,9 +18,9 @@ async  function myhandler(event: LambdaFunctionURLEvent, responseStream: Respons
 
         let body = JSON.parse(event.body!);
         let message = body['message'];
+        let chatHistory = body['chatHistory'];
         console.log(JSON.stringify(event));
-        console.log(message);
-        const response = await askChat({message});
+        const response = await askChat({message, chatHistory});
 
         let reader   = response.getReader();
 

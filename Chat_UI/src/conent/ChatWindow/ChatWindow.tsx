@@ -7,7 +7,7 @@ import { UserInput } from '../../components/input/userInput/userInput';
 import { ChatResponse } from '../../components/input/charResponse/ChatResponse';
 import { CHAT, Ichat, MessageTypeEnum } from '../../healper/healper';
 import { useDispatch, useSelector } from 'react-redux';
-import { currentChat , addMessages, updateChat} from '../../store/chat.slice';
+import { currentChat , addMessages, updateChat, removeChat} from '../../store/chat.slice';
 import { nanoid } from 'nanoid';
 
 export const ChatWindow: React.FC = () => {
@@ -30,6 +30,14 @@ export const ChatWindow: React.FC = () => {
         userMessage[CHAT.MESSAGE] = message;
         const assistantMessage = getAssistantMessage();
         setisLoading(true);
+
+        const ChatHistory = chat.map((item)=>{
+            const obj = {
+                role : item[CHAT.USER],
+                content : item[CHAT.MESSAGE]
+            }
+            return obj;
+        });
         dispatch(addMessages([userMessage, assistantMessage]));
 
         fetch('https://ybiaghphzhohf2vcdmdy2v5fvi0aictl.lambda-url.us-east-1.on.aws/', {
@@ -38,7 +46,8 @@ export const ChatWindow: React.FC = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                message: message
+                message: message,
+                ChatHistory : ChatHistory
             })
         }).then((response) => {
             const reader = response.body!.getReader();
@@ -64,11 +73,17 @@ export const ChatWindow: React.FC = () => {
                     return readStream();
                 }).catch((error: any) => {
                     console.error('Stream reading error:', error);
+                    alert("Error while data streaming");
+                    dispatch(removeChat(assistantMessage[CHAT.ID]));
                 });
             }
 
             // Start reading the stream
             readStream();
+        }).catch((e)=>{
+            console.log(e);
+            alert("Internal Server Erorr");
+            dispatch(removeChat(assistantMessage[CHAT.ID]));
         })
     }
 
@@ -83,12 +98,12 @@ export const ChatWindow: React.FC = () => {
                         <div className="chat-header absolute left-0 right-0 ">
                             <Header></Header>
                         </div>
-                        <div className="chat-content flex h-full flex-col items-center justify-center ">
+                        <div className="chat-content flex h-full flex-col items-center justify-center">
                             {/* <div className="relative">
                                 <div className="mb-3 h-12 w-12"></div>
                             </div> */}
                             {isContent ?
-                                <div className='w-full h-full flex flex-col  items-center pb-7 mt-10 overflow-y-auto max-h-[calc(100vh-200px)] justify-end' ref={containerRef}>
+                                <div className='w-full h-full flex flex-col  items-center pb-7 mt-10 max-h-[calc(100vh-200px)] justify-end chats' ref={containerRef}>
                                     <div className='w-[97%] md:w-[50%] max-h-full'>
 
                                         {chat.map((item: Ichat) => {

@@ -42,8 +42,9 @@ const chatSlice = createSlice({
             console.log(newState);
             return newState;
         },
-        reloadChat(state) {
-            state = [...state];
+        removeChat(state, action : PayloadAction<string>) {
+            const newState =  state.filter((item)=> item[CHAT.ID] != action.payload);
+            return [...newState];
         },
         addMessages(state, action: PayloadAction<Ichat[]>) {
             return [...state, ...action.payload];
@@ -54,5 +55,5 @@ const chatSlice = createSlice({
 export const currentChat = (state: RootState) => state.chat;
 
 
-export const { updateChat, reloadChat, addMessages } = chatSlice.actions
+export const { updateChat, removeChat, addMessages } = chatSlice.actions
 export default chatSlice.reducer
