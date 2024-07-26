@@ -1,6 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult, LambdaFunctionURLEvent } from "aws-lambda";
 import { askChat } from "./OpenAI.agent";
 import { streamifyResponse, ResponseStream } from 'lambda-stream'
+import { qdrant_ingestion } from "./vector-store/qdrant.ingestion";
 
 const headers = {
     'Content-Type': 'text/html',
@@ -82,3 +83,5 @@ function readStream(reader, responseStream) {
     }).catch(error => {
       console.error('Stream reading error:', error);
     });}
+
+    qdrant_ingestion().catch(console.error);

@@ -1,3 +1,5 @@
+ai_agent_lambda/src/data
+
 # Logs
 logs
 *.log

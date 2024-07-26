@@ -39,6 +39,10 @@ export const ChatWindow: React.FC = () => {
             return obj;
         });
         dispatch(addMessages([userMessage, assistantMessage]));
+        if (containerRef.current) {
+                    
+            containerRef.current.scrollTop = containerRef.current.scrollHeight;
+        }
 
         fetch('https://ybiaghphzhohf2vcdmdy2v5fvi0aictl.lambda-url.us-east-1.on.aws/', {
             method: 'POST',
@@ -64,7 +68,7 @@ export const ChatWindow: React.FC = () => {
                     if (containerRef.current) {
                     
                         containerRef.current.scrollTop = containerRef.current.scrollHeight;
-                      }
+                    }
                     message = message + decoder.decode(value, { stream: true })
                     console.log(message);
                     // Process the chunk (value) here
