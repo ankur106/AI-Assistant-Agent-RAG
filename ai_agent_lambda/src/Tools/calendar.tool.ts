@@ -6,7 +6,7 @@ import { Events, GEvent } from './helper/calender.model';
 
 
 //INFO:: Without Gsuite I cannot add attendees, so leaving it for right now
-const insertCalanderEvent = async () => {
+const insertCalendarEvent = async () => {
 
   return JSON.stringify(
   {
@@ -40,14 +40,14 @@ const insertCalanderEvent = async () => {
 };
 
 
-export const insertCalanderEventTool  = new FunctionTool(insertCalanderEvent, {
-  name : "insertCalanderEvents",
-  description: "set Meeting on Calander"
+export const insertCalendarEventTool  = new FunctionTool(insertCalendarEvent, {
+  name : "insertCalendarEvents",
+  description: "set Meeting on Calendar"
 });
 
 
 
-const fetchCalanderEvent = async (days  : number = 2 ) : Promise<JSONValue> => {
+const fetchCalendarEvent = async (days  : number = 2 ) : Promise<JSONValue> => {
 
 
   // create client that we can use to communicate with Google 
@@ -112,8 +112,8 @@ const fetchCalanderEvent = async (days  : number = 2 ) : Promise<JSONValue> => {
 
 
 
-export const fetchCalendarEventTool  = new FunctionTool(fetchCalanderEvent, {
-  name : "fetchCalanderEvents",
-  description: "Ankur's 'UNAVAILABLE' Time MST, Google Calander"
+export const fetchCalendarEventTool  = new FunctionTool(fetchCalendarEvent, {
+  name : "fetchCalendarEvents",
+  description: "Ankur's 'UNAVAILABLE' Time MST, Google Calendar"
 });
 

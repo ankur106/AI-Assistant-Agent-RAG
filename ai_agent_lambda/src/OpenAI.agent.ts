@@ -2,8 +2,8 @@
 import {
   
     fetchCalendarEventTool,
-    insertCalanderEventTool
-  } from "./Tools/calander.tool";
+    insertCalendarEventTool
+  } from "./Tools/calendar.tool";
   import {
       ChatMessage,
     OpenAI,
@@ -44,7 +44,7 @@ import {
   
   
     const agent = new OpenAIAgent({
-      tools: [vectorEngineTool, fetchCalendarEventTool, insertCalanderEventTool],
+      tools: [vectorEngineTool, fetchCalendarEventTool, insertCalendarEventTool],
       verbose: true,
       systemPrompt : "You are Maya, AI Assistant of Ankur Patel. Your job is to answer questions about Ankur of other people. Your additional ability is giving summary/detail info of ankur. You can also help setting up meeting with ankur. You like to add humour in Your answer."
     });
