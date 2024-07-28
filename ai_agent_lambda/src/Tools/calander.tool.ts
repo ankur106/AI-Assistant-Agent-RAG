@@ -105,7 +105,7 @@ const fetchCalanderEvent = async (days  : number = 2 ) : Promise<JSONValue> => {
   }
 
   return JSON.stringify({
-    "blockedTimes" : blockedTimes
+    "UNAVAILABLE" : blockedTimes
   });
 }
 
@@ -114,6 +114,6 @@ const fetchCalanderEvent = async (days  : number = 2 ) : Promise<JSONValue> => {
 
 export const fetchCalendarEventTool  = new FunctionTool(fetchCalanderEvent, {
   name : "fetchCalanderEvents",
-  description: "this function gives unavailable time for the next few days so that user can set a meeting"
+  description: "Ankur's 'UNAVAILABLE' Time MST, Google Calander"
 });
 
