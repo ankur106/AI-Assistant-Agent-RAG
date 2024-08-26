@@ -1,19 +1,18 @@
 
 import {
+
+  fetchCalendarEventTool,
+  insertCalendarEventTool
+} from "./Tools/calendar.tool";
+import {
+  ChatMessage,
+  OpenAI,
+  OpenAIAgent,
+  Settings,
+} from "llamaindex";
+import 'dotenv/config';
   
-    fetchCalendarEventTool,
-    insertCalendarEventTool
-  } from "./Tools/calendar.tool";
-  import {
-      ChatMessage,
-    OpenAI,
-    OpenAIAgent,
-    Settings,
-  } from "llamaindex"
-  import 'dotenv/config'
-  
-  import { getCircularReplacer } from "./healper";
-  // import { pdfReaderTool } from "./Tools/pdfreader.tool";
+    // import { pdfReaderTool } from "./Tools/pdfreader.tool";
   // import { qdrant_ingestion } from "./vector-store/qdrant.ingestion";
   import { qdrant_vector_tool } from "./Tools/qdrant_vector_store.tool";
   

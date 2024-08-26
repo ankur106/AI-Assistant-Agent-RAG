@@ -8,11 +8,12 @@ export const handler = streamifyResponse(myhandler)
 async  function myhandler(event: LambdaFunctionURLEvent, responseStream: ResponseStream): Promise<void> {
 
     try {
+      if(event.body == undefined) return;
+      console.log(JSON.stringify(event));
 
-        let body = JSON.parse(event.body!);
+        let body = JSON.parse(event.body);
         let message = body['message'];
         let chatHistory = body['chatHistory'];
-        console.log(JSON.stringify(event));
         const response = await askChat({message, chatHistory});
 
         let reader   = response.getReader();
